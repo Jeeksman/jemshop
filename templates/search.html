@@ -1,0 +1,119 @@
+{% extends 'headder.html' %}
+{% load static%}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="{% static 'home/images/favicon.png' %} " type="image/x-icon">
+
+    <title>
+        Giftos
+    </title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.css' %}" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home/css/style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'home/css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="hero_area">
+
+        <!-- slider section -->
+
+        <section class="slider_section">
+            <div class="slider_container">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-item ">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="detail-box">
+                                        <h1>
+                                            Welcome To Our <br>
+                                            Gift Shop
+                                        </h1>
+                                        <p> we are here for you
+                                        </p>
+                                        <a href="">
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 ">
+                                    <div class="img-box">
+                                        <img src="{% static 'home/images/sale2.jpg' %}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="shop_section layout_padding">
+            <div class="container">
+                <div class="heading_container heading_center">
+                    <h2>
+                        Latest Products
+                    </h2>
+                </div>
+                <div class="row">
+                    {% for i in prod %}
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="box">
+                            <a href="">
+                                <div class="img-box">
+                                    <a href="{{i.get_url}}"> <img src="{{i.img.url}}" alt="">
+                                </div>
+                                <div class="detail-box">
+                                    <h6>
+                                        {{i.name}}
+                                    </h6>
+                                    <h6>
+                                        Price
+                                        <span>
+                                            {{i.price}}
+                                        </span>
+                                    </h6>
+                                </div>
+                                <div class="new">
+                                    <span>
+                                        New
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+
+</html>
+
+
+{% endblock %}

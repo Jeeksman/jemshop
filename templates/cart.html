@@ -1,0 +1,48 @@
+{% extends 'headder.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!-- Customized Bootstrap Stylesheet -->
+    
+    <link href="{% static 'cart/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
+</head>
+<body style="background-color:rgb(167, 208, 249);">
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="cart-items">
+            {% for i in ci %}
+            <div class="product">
+                <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="{{i.prodt.name}}" style="height:50px; width: 50px;"></a>
+                <div class="product-info">
+                    <h4><div class="product-price"> {{i.prodt.name}}</div></h4>
+                    
+                    <div class="product-title">Price: {{i.total}}</div>
+                </div>
+                <div class="product-quantity">
+                    <span><a href="{% url 'addcart' i.prodt.id %}"><i class="fa fa-plus" style="font-size:15px"></i>&nbsp;</a> {{i.quant}} <a href="{% url 'delcart' i.prodt.id %}">&nbsp;<i class="fa fa-minus" style="font-size:15px"></i></a></span>
+                </div>
+                <div class="product-remove">
+                    <span><a href="{% url 'remvcart' i.prodt.id %}"><i class="fa fa-trash-o" style="font-size:24px"></i></a></span>
+
+                </div>
+            </div>
+            {% endfor %}
+                
+            </div>
+        </div>
+        <div class="cart-summary">
+            
+            <div class="cart-total">Total: ₹: {{t}}</div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+  {% endblock %}
